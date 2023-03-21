@@ -4,7 +4,6 @@ type ProductRowProps = {
   product: Product;
 };
 export default function ProductRow({ product }: ProductRowProps) {
-  console.log(product);
   return (
     <tr key={product.name}>
       <td>
