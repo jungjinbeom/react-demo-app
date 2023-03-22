@@ -1,12 +1,31 @@
 import CheckBoxField from "./CheckField";
+import TextField from "./TextField";
 
-export default function SearchBar() {
+type SearchBarProps = {
+  filterText: string;
+  setFilterText: (value: string) => void;
+  isStockOnly: boolean;
+  setIsStockOnly: (value: boolean) => void;
+};
+
+export default function SearchBar({
+  filterText,
+  setFilterText,
+  isStockOnly,
+  setIsStockOnly,
+}: SearchBarProps) {
   return (
     <div className="search-bar">
-      <div>
-        <input type="text" placeholder="Search..." />
-      </div>
-      <CheckBoxField label="Only show products in stock" />
+      <TextField
+        filterText={filterText}
+        setFilterText={setFilterText}
+        placeholder="Search..."
+      />
+      <CheckBoxField
+        label="Only show products in stock"
+        isStockOnly={isStockOnly}
+        setIsStockOnly={setIsStockOnly}
+      />
     </div>
   );
 }
