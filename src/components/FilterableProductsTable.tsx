@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "../types/Product";
 import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
@@ -10,6 +10,7 @@ type FilterableProductsTableProps = {
 export default function FilterableProductsTable({
   products,
 }: FilterableProductsTableProps) {
+  useEffect(() => {}, []);
   const [filterText, setFilterText] = useState<string>("");
   const [isStockOnly, setIsStockOnly] = useState<boolean>(false);
 

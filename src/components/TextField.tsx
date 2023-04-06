@@ -1,26 +1,31 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef } from "react";
 
 type TextFieldProps = {
-  filterText: string;
-  setFilterText: (value: string) => void;
+  label: string;
+  text: string;
+  setText: (value: string) => void;
   placeholder: string;
 };
 
 export default function TextField({
-  filterText,
-  setFilterText,
+  label,
+  text,
+  setText,
   placeholder,
 }: TextFieldProps) {
+  const id = useRef(`input-${Math.random()}`);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setFilterText(value);
+    setText(value);
   };
   return (
     <div>
+      <label htmlFor={id.current}>{label}</label>
       <input
+        id={id.current}
         type="text"
         placeholder={placeholder}
-        value={filterText}
+        value={text}
         onChange={handleChange}
       />
     </div>
